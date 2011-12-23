@@ -8,6 +8,7 @@ SimpleOpenNI context;
 
 AloneInTheCroud aloneInTheCroud;
 InvisibleMan invisibleMan;
+Ghosts ghosts;
 int chosenUser = 0;
 
 int selectedView = 0;
@@ -40,6 +41,8 @@ void setup()
   
   invisibleMan = new InvisibleMan(context);
   
+  ghosts = new Ghosts(context);
+  
 }
 
 void draw()
@@ -53,6 +56,9 @@ void draw()
       break;
     case 1:
       invisibleMan.draw(chosenUser);
+      break;
+    case 2:
+      ghosts.draw(chosenUser);
       break;
   }
   
@@ -98,7 +104,7 @@ void keyPressed()
   if(key == 'n'){
     chooseUser();
   } else {
-    selectedView = (selectedView+1)%2;
+    selectedView = (selectedView+1)%3;
     println("switching to view "+selectedView);
   }
 }
